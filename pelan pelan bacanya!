@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu 💌</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffe4ec, #fff7fb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.app{
+    width:360px;
+    background:white;
+    border-radius:25px;
+    padding:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+h1{
+    color:#ff4d88;
+    margin-bottom:10px;
+}
+
+.menu-btn{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:none;
+    border-radius:15px;
+    background:#ff7aa8;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:15px;
+}
+
+.menu-btn:hover{
+    background:#ff4d88;
+    transform:scale(1.03);
+}
+
+.card{
+    margin-top:15px;
+    background:#fff0f6;
+    padding:18px;
+    border-radius:20px;
+    min-height:160px;
+    animation:fade 0.4s;
+}
+
+.sticker{
+    font-size:50px;
+}
+
+.text{
+    margin-top:10px;
+    color:#444;
+    line-height:1.6;
+    font-size:14px;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgm" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="app">
+    <h1>💌 Untuk Kamu</h1>
+
+    <button class="menu-btn" onclick="showMessage(0)">Tentang Masa Lalu</button>
+    <button class="menu-btn" onclick="showMessage(1)">Tentang Kepercayaan</button>
+    <button class="menu-btn" onclick="showMessage(2)">Untuk Kamu</button>
+    <button class="menu-btn" onclick="toggleMusic()">🎵 Play / Pause Musik</button>
+
+    <div class="card" id="card">
+        <div class="sticker">🐻💗</div>
+        <div class="text">Klik menu untuk membaca pesan...</div>
+    </div>
+</div>
+
+<script>
+
+const bgm = document.getElementById("bgm");
+let playing = false;
+
+function toggleMusic(){
+    if(playing){
+        bgm.pause();
+        playing = false;
+    } else {
+        bgm.play();
+        playing = true;
+    }
+}
+
+const data = [
+{
+sticker:"💔🐻",
+text:"Aku pernah kecewa dalam cinta, sampai aku belajar bahwa tidak semua orang datang untuk tinggal. Ada yang hanya singgah dan meninggalkan luka."
+},
+
+{
+sticker:"🌧️💭",
+text:"Setelah itu aku jadi sulit percaya. Bukan karena aku tidak mau mencintai, tapi karena aku takut mengulang rasa sakit yang sama."
+},
+
+{
+sticker:"💖✨",
+text:"Tapi bersamamu aku belajar pelan-pelan. Aku tidak ingin terburu-buru, tapi aku ingin berusaha. Waktu dan perasaanku tidak aku sia-siakan untukmu."
+}
+];
+
+function showMessage(i){
+    document.getElementById("card").innerHTML = `
+        <div class="sticker">${data[i].sticker}</div>
+        <div class="text">${data[i].text}</div>
+    `;
+}
+
+</script>
+
+</body>
+</html>
